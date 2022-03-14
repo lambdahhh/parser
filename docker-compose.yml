@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  frontend:
+    build:
+      context: ./docker
+    ports:
+      - "6300:80"
+    volumes:
+      - ./docker/nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./public:/www/public
+    working_dir: /www/public
+    command: nginx -g 'daemon off;'
